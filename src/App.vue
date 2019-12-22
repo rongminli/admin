@@ -1,0 +1,30 @@
+<template>
+  <div id="app">
+    <Login/>
+  </div>
+</template>
+
+<script>
+// import HelloWorld from './components/HelloWorld.vue'
+import Login from './views/login.vue'
+
+export default {
+  name: 'app',
+  components: {
+    Login
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+</style>
