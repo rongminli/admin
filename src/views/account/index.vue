@@ -2,11 +2,9 @@
 	<div class="container">
 		<div class="wraper">
 			<div class="action" ref="action">
-				<form class="login-form" action="../index.html">
-					<h1>登 录</h1>
-					<div class="txtb"><input type="text" name="" id="" placeholder="邮 箱" /></div>
-					<div class="txtb"><input type="password" name="" id="" placeholder="密 码" /></div>
-					<input type="submit" class="donebtn" value="确 定" />
+				<!--  -->
+				<div class="login-form">
+					<Login/>
 					<div class="bottom-text">
 						<div class="left">
 							<a href="#" @click="toggle('findpwd')">
@@ -22,16 +20,9 @@
 							</a>
 						</div>
 					</div>
-				</form>
-				<form class="signup-form" action="../index.html">
-					<h1>注 册</h1>
-					<div class="txtb"><input type="text" name="" id="" placeholder="邮 箱" /></div>
-					<div class="txtb"><input type="password" name="" id="" placeholder="密 码" /></div>
-					<div class="txtb vCode">
-						<input type="text" name="" id="" placeholder="验证码" />
-						<SendVCodeBtn />
-					</div>
-					<input type="submit" class="donebtn" value="确 定" />
+				</div>
+				<div class="signup-form">
+					<Signup/>
 					<div class="bottom-text">
 						<div class="left">
 							已有账号？
@@ -41,16 +32,9 @@
 							</a>
 						</div>
 					</div>
-				</form>
-				<form class="findpwd-form" action="../index.html">
-					<h1>找回密码</h1>
-					<div class="txtb"><input type="email" name="" id="" placeholder="邮 箱" /></div>
-					<div class="txtb vCode">
-						<input type="text" name="" id="" placeholder="验证码" />
-						<SendVCodeBtn />
-					</div>
-					<div class="txtb"><input type="password" name="" id="" placeholder="新密码" /></div>
-					<input type="submit" class="donebtn" value="确 定" />
+				</div>
+				<div class="findpwd-form" >
+					<Findpwd/>
 					<div class="bottom-text">
 						<div class="right">
 							<a href="#" @click="toggle()">
@@ -59,13 +43,16 @@
 							</a>
 						</div>
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import Login from './login.vue'
+import Signup from './signup.vue'
+import Findpwd from './findpwd.vue'
 import SendVCodeBtn from '@/components/formEl/SendVCodeBtn.vue';
 
 const state = {
@@ -74,12 +61,16 @@ const state = {
 	INVALID: 'invalid'
 };
 export default {
-	name: 'Login',
-	components: { SendVCodeBtn },
+	name: 'Account',
+	components: { SendVCodeBtn,Login,Signup,Findpwd },
 	data() {
 		return {
 			countDownStr: '',
-			state: state.NORMAL
+			state: state.NORMAL,
+			loginForm: {
+				email:'1055310405@qq.com',
+				password: '000000'
+			}
 		};
 	},
 	methods: {
@@ -128,7 +119,7 @@ export default {
 }
 
 .signup {
-	transform:  rotate3d(0, 1, 0, -120deg);
+	transform:  rotate3d(0, 1, 0, 240deg);
 }
 .findpwd {
 	transform:  rotate3d(0, 1, 0, 120deg);
@@ -157,56 +148,6 @@ export default {
 }
 .findpwd-form {
 	transform: rotateY(-120deg) translateZ(120px);
-}
-
-.findpwd-form h1,
-.login-form h1,
-.signup-form h1 {
-	text-align: center;
-	margin-bottom: 60px;
-}
-
-.txtb {
-	border-bottom: 2px solid #adadad;
-	position: relative;
-	margin: 30px 0;
-}
-
-.txtb input {
-	font-size: 15px;
-	color: #333;
-	border: none;
-	outline: none;
-	background: none;
-	padding: 0 5px;
-	height: 40px;
-	width: 100%;
-	text-align: center;
-	letter-spacing: 1px;
-}
-.SendVCodeBtn {
-	position: absolute;
-	right: 0;
-	bottom: 2px;
-}
-.donebtn {
-	display: block;
-	width: 100%;
-	height: 50px;
-	cursor: pointer;
-	background-color: inherit;
-	border: 2px rgba(115, 110, 100, 0.5) solid;
-	border-radius: 10px;
-	transition: 0.5s;
-	font-size: 23px;
-	font-weight: bold;
-	margin-top: 69px;
-	color: rgb(100, 100, 80);
-	outline: none;
-}
-
-.donebtn:hover {
-	background-color: rgba(160, 150, 100, 0.5);
 }
 
 .bottom-text .left {

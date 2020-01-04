@@ -1,22 +1,15 @@
 <template>
 	<div id="app">
 		<div id="page">
-			<Login />
-			<Home />
+			<router-view></router-view>
 		</div>
 	</div>
 </template>
 
 <script>
-import Login from './views/login.vue';
-import Home from './views/home';
 
 export default {
 	name: 'app',
-	components: {
-		Login,
-		Home
-	}
 };
 </script>
 
@@ -29,6 +22,7 @@ export default {
 
 html {
   box-sizing: border-box;
+  overflow-y: scroll;
 }
 *, *::before, *::after {
   box-sizing: inherit;
@@ -36,6 +30,9 @@ html {
 * {
 	margin: 0;
 	padding: 0;
+}
+body{
+	background-color: #fffaf0;
 }
 </style>
 

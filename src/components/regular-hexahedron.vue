@@ -1,5 +1,5 @@
 <template>
-	<div class="wrap">
+	<div class="wrap" id="regularHexahedron">
 		<div class="box">
 			<div></div>
 			<div></div>
@@ -13,8 +13,18 @@
 </template>
 
 <script>
+import mouseMoveEvent from '@/utils/mouseMoveEvent.js';
 export default {
-	name: 'regular-hexahedron'
+	name: 'regular-hexahedron',
+	mounted() {
+		mouseMoveEvent.addListener('regularHexahedron', (mousePos, elPos,el) => {
+			const x = mousePos.x - elPos.left;
+			const y = mousePos.y - elPos.top;
+			const angleY = ((x - elPos.width / 2) / elPos.width) * 360;
+			const angleX = ((elPos.height / 2 - y) / elPos.height) * 360;
+			el.children[0].style = 'transform: rotateX(' + angleX + 'deg) rotateY(' + angleY + 'deg);';
+		});
+	}
 };
 </script>
 
@@ -23,8 +33,10 @@ export default {
 	transform-style: preserve-3d;
 	transform: perspective(1000px);
 	position: relative;
-	padding-top: 100px;
-	padding-bottom: 100px;
+	padding-top: 150px;
+	padding-bottom: 150px;
+	/* 	margin-top: 100px;
+	margin-bottom: 100px; */
 }
 
 .box {
@@ -33,19 +45,19 @@ export default {
 	margin: 0px auto 0;
 	transform-style: preserve-3d;
 	text-align: center;
-	transition: 3s ease-in-out;
+	/* transition: 3s ease-in-out; */
 	border-radius: 5px;
 	position: relative;
-	background-color: rgba(255, 250, 240,0.5);;
+	background-color: rgba(255, 250, 240, 0.5);
 	border: 1px rosybrown solid;
 }
-.box h1{
+.box h1 {
 	font-size: 25px;
 	line-height: 300px;
 }
 
 .box:hover {
-	transform: rotateY(180deg);
+	/* transform: rotateY(180deg); */
 }
 .box > div {
 	width: 100%;
@@ -58,7 +70,7 @@ export default {
 	line-height: 300px;
 	border-radius: 20px;
 	border: 2px rosybrown solid;
-	background-color: rgba(240, 235, 210,0.1);
+	background-color: rgba(240, 235, 210, 0.1);
 }
 
 .box > div:nth-child(1) {
