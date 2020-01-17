@@ -9,7 +9,6 @@ import {
  * @param route
  */
 function hasPermission(roles, route) {
-	debugger
 	if (route.meta && route.meta.roles) {
 		return roles.some(role => route.meta.roles.includes(role))
 	} else {

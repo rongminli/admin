@@ -1,12 +1,12 @@
 <template>
-		<RegularHexahedron/>
+		<Cube/>
 </template>
 
 <script>
-import RegularHexahedron from '@/components/regular-hexahedron.vue'
+import Cube from '@/components/cube'
 export default {
 	name: 'Home',
-	components: {RegularHexahedron }
+	components: {Cube }
 };
 </script>
 

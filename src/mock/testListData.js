@@ -1,7 +1,7 @@
 const list = []
 
 function findByPage(prarms) {
-	for (let i = 0; i < 100; i++) {
+	for (let i = 0; i < 12; i++) {
 		list.push({
 			username: i,
 			age: i,

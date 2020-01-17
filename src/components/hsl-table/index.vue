@@ -1,42 +1,9 @@
 <template>
-	<div class="app-container">
+	<div class="hsl-table">
 		<toolbar :text="config.search.text" @newData="defaultHandleAddBtn" @refresh="refresh" @search="search" @searchTextClear="refreshCancel" />
 		<el-table v-loading="loading" :data="tableDataList" :stripe="true" element-loading-text="Loading" border fit highlight-current-row @row-dblclick="hendRowDBlclick">
-			<template v-for="(colum, index) in config.columns">
-				<template v-if="colum.field === 'index'">
-					<el-table-column :key="index" align="center" label="INDEX" width="95">
-						<template slot-scope="scope">
-							{{ scope.$index + 1 }}
-						</template>
-					</el-table-column>
-				</template>
-				<template v-else>
-					<el-table-column :key="index" :label="colum.label" :width="colum.width" align="center">
-						<template slot-scope="scope">
-							<template v-if="colum.editable">
-								<el-input v-if="scope.row.actionState == 'edit'" v-model="scope.row[colum.field]" :placeholder="colum.label" />
-								<div v-else>
-									<template v-if="colum.type == Date">
-										{{ scope.row[colum.field] | date('%F') }}
-									</template>
-									<template v-else>
-										{{ scope.row[colum.field] }}
-									</template>
-								</div>
-							</template>
-							<template v-else>
-								<template v-if="colum.type == Date">
-									{{ scope.row[colum.field] | date('%F') }}
-								</template>
-								<template v-else>
-									{{ scope.row[colum.field] }}
-								</template>
-							</template>
-						</template>
-					</el-table-column>
-				</template>
-			</template>
-			<el-table-column fixed="right" label="操作" align="center" >
+			<TableColumn v-for="(column, index) in config.columns" :column="column" />
+			<el-table-column fixed="right" label="操作" align="center">
 				<template slot-scope="scope">
 					<el-button-group>
 						<el-button v-if="scope.row.actionState != 'edit'" type="primary" size="mini" icon="el-icon-edit" @click="defaultHandleEditBtn(scope.row)" />
@@ -58,7 +25,9 @@ import pagination from './pagination/index';
 import PageInfo from './pagination/PageInfo';
 import toolbar from './toolbar/index';
 
-import _ from 'lodash'
+import TableColumn from './table-column/index.vue';
+
+import _ from 'lodash';
 
 let api = {};
 const importApi = (srcRUL, CB) => {
@@ -69,7 +38,7 @@ const importApi = (srcRUL, CB) => {
 };
 
 export default {
-	components: { pagination, toolbar },
+	components: { pagination, toolbar, TableColumn },
 	props: {
 		config: {
 			type: Object,

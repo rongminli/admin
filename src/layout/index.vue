@@ -5,10 +5,13 @@
 			<Menu />
 		</div>
 		<div class="right">
+			<NavBar/>
 			<div class="main">
-				 <transition name="fade">
-					 <router-view></router-view>
-				 </transition>
+				<transition name="fade" mode="out-in">
+					<keep-alive>
+						<router-view></router-view>
+					</keep-alive>
+				</transition>
 			</div>
 		</div>
 		<user />
@@ -17,10 +20,11 @@
 
 <script>
 import user from './user.vue';
-import Menu from './menu.vue';
+import Menu from './menu';
+import NavBar from './nav-bar';
 export default {
 	name: 'Layout',
-	components: { Menu, user }
+	components: { Menu, user, NavBar }
 };
 </script>
 
@@ -54,7 +58,7 @@ export default {
 
 .main {
 	width: 100%;
-	min-height: 500px;
+	min-height: calc(100vh - 200px);
 	background: rgb(240, 235, 210);
 	border-radius: 10px;
 	position: absolute;
@@ -72,13 +76,5 @@ export default {
 	color: #101010;
 }
 
-.fade-leave-active{
-	
-}
-.fade-enter-active {
-  transition: opacity .5s
-}
-.fade-enter, .fade-leave-active {
-  opacity: 0
-}
+
 </style>

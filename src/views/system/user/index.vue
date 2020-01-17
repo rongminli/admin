@@ -7,7 +7,7 @@
 <script>
 	import hslTable from '@/components/hsl-table'
 	export default {
-		name: 'tableExample',
+		name: 'User',
 		components:{ hslTable },
 		data(){
 			return {

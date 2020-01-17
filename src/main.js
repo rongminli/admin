@@ -8,7 +8,7 @@ import router from './router'
 import store from './store'
 // import './permission.js'
 import axios from './http/api'
-  
+  import './styles/index.scss'
 require('./mock/mock.js')
 
 import VueFilter from 'vue-filter';

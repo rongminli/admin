@@ -11,7 +11,7 @@
 
 <script>
 	export default {
-		name: 'Portrait',
+		name: 'profiles',
 		data(){
 			return {
 				userPortraits:[
@@ -24,7 +24,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.profiles-container {
 		width: 100%;
 		padding: 30px 10px 20px 20px;

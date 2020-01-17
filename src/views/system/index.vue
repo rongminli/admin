@@ -4,7 +4,7 @@
 
 <script>
 	export default {
-		nema: 'system'
+		name: 'System'
 	}
 </script>
 

@@ -15,7 +15,7 @@
 <script>
 import mouseMoveEvent from '@/utils/mouseMoveEvent.js';
 export default {
-	name: 'regular-hexahedron',
+	name: 'Cube',
 	mounted() {
 		mouseMoveEvent.addListener('regularHexahedron', (mousePos, elPos,el) => {
 			const x = mousePos.x - elPos.left;
@@ -35,8 +35,6 @@ export default {
 	position: relative;
 	padding-top: 150px;
 	padding-bottom: 150px;
-	/* 	margin-top: 100px;
-	margin-bottom: 100px; */
 }
 
 .box {
@@ -45,7 +43,6 @@ export default {
 	margin: 0px auto 0;
 	transform-style: preserve-3d;
 	text-align: center;
-	/* transition: 3s ease-in-out; */
 	border-radius: 5px;
 	position: relative;
 	background-color: rgba(255, 250, 240, 0.5);

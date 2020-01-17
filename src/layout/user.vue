@@ -22,6 +22,7 @@ img:hover {
 	right: 50px;
 	top: 30px;
 	font-size: 1rem;
+	z-index: 1000;
 }
 .username {
 	font-weight: 600;
